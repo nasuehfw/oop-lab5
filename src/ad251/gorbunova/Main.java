@@ -1,0 +1,101 @@
+/*
+ * Copyright (c) 2026. Anastasiia Gorbunova
+ * National University "Odesa Polytechnic"
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://apache.org
+ */
+package ad251.gorbunova;
+
+/**
+ * Головний керуючий клас програми (Точка входу).
+ * Координує виконання та форматування результатів у вигляді таблиць CLI.
+ * 
+ * @author Анастасія Горбунова
+ * @version 5.0 23 Oct 2026
+ */
+public class Main {
+
+    /**
+     * Точка входу в систему. Формує структурований псевдотабличний лог.
+     * 
+     * @param args аргументи командного рядка CLI
+     */
+    public static void main(String[] args) {
+        System.out.print("=== Лабораторна робота №5 ===\n");
+        System.out.print("Тема: Особливості призначення інтерфейсів та принципу успадкування.\n\n");
+
+        // =====================================================================
+        // 1. ЗАГАЛЬНА ПРАКТИЧНА ЧАСТИНА (Транспортні засоби)
+        // =====================================================================
+        System.out.print("--- 1. Демонстрація загального прикладу (Транспортні засоби) ---\n");
+        String vSeparator = "+------------+--------------+------+----------+-------------------------------------------------------+";
+        
+        Vehicle[] vehicles = {
+            new Car("Toyota", 2022),
+            new Bicycle("Trek", 2023),
+            new ElectricCar("Tesla", 2024)
+        };
+
+        System.out.println(vSeparator);
+        System.out.printf("| %-10s | %-12s | %-4s | %-8s | %-53s |%n", "Тип", "Марка/Модель", "Рік", "Зарядка", "Поточний стан / Дія");
+        System.out.println(vSeparator);
+
+        for (Vehicle v : vehicles) {
+            String type = "Автомобіль";
+            if (v instanceof Bicycle) type = "Велосипед";
+            if (v instanceof ElectricCar) type = "Електрокар";
+
+            // Безопасная проверка интерфейса без вызова void-метода в строку
+            String chargeStatus = (v instanceof Chargeable) ? "+" : "-";
+
+            System.out.printf("| %-10s | %-12s | %-4d | %-8s | %-53s |%n", 
+                    type, v.getModel(), v.getYear(), "   " + chargeStatus, v.move());
+        }
+        System.out.println(vSeparator);
+        System.out.print("\n");
+
+        // =====================================================================
+        // 2. ІНДИВІДУАЛЬНЕ ЗАВДАННЯ: ВАРІАНТ №7 (Комп'ютерна техніка)
+        // =====================================================================
+        System.out.print("--- 2. Демонстрація індивідуального Варіанту №7 (Комп'ютерна техніка) ---\n");
+        String dSeparator = "+------------+-------------+-----------------+------------+-------------------------------------------+";
+
+        ComputerDevice[] devices = {
+            new Laptop("Lenovo", "ThinkPad T470s", 4600),
+            new Desktop("ASUS", "ROG Strix", 750),
+            new Laptop("Apple", "MacBook Pro", 5800)
+        };
+
+        System.out.println(dSeparator);
+        System.out.printf("| %-10s | %-11s | %-15s | %-10s | %-41s |%n", "Тип", "Виробник", "Модель", "Мережа", "Статус ОС (bootUp)");
+        System.out.println(dSeparator);
+
+        for (ComputerDevice cd : devices) {
+            String typeLabel = (cd instanceof Laptop) ? "Ноутбук" : "Десктоп";
+            String netLabel = " ";
+            
+            if (cd instanceof Connectable) {
+                netLabel = ((Connectable) cd).getNetworkType();
+            }
+
+            System.out.printf("| %-10s | %-11s | %-15s | %-10s | %-41s |%n", 
+                    typeLabel, cd.getBrand(), cd.getModel(), netLabel, cd.bootUp());
+        }
+
+        // Демонстрація поліморфізму через інтерфейсне посилання
+        Connectable officeLaptop = new Laptop("HP", "EliteBook", 5000);
+        if (officeLaptop instanceof ComputerDevice) {
+            ComputerDevice polyDevice = (ComputerDevice) officeLaptop;
+            System.out.printf("| %-10s | %-11s | %-15s | %-10s | %-41s |%n", 
+                    "* Ноутбук", polyDevice.getBrand(), polyDevice.getModel(), officeLaptop.getNetworkType(), polyDevice.bootUp());
+        }
+        
+        System.out.println(dSeparator);
+        System.out.println("[АННОТАЦІЯ] * — Об'єкт створено через інтерфейсний тип посилання (Connectable dev = new Laptop(...)).");
+        System.out.println("                Демонстрація динамічного поліморфізму та доступу виключно до методів інтерфейсу.");
+    }
+}

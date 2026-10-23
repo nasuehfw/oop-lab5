@@ -1,0 +1,34 @@
+@startuml
+abstract class ComputerDevice {
+  - brand : String
+  - model : String
+  + showInfo() : void
+  + start() : void
+}
+
+interface Connectable {
+  + connect() : void
+}
+
+class Laptop {
+  + start() : void
+  + connect() : void
+}
+
+class Desktop {
+  + start() : void
+  + connect() : void
+}
+
+ComputerDevice <|-- Laptop
+ComputerDevice <|-- Desktop
+Connectable <|.. Laptop
+Connectable <|.. Desktop
+
+' Демонстрация полиморфизма
+class Main {
+  + main(args : String[]) : void
+}
+
+Main --> ComputerDevice : uses array [ ]
+@enduml
