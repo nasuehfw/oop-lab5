@@ -27,18 +27,19 @@ public class Main {
      */
     public static void main(String[] args) {
         System.out.print("=== Лабораторна робота №5 ===\n");
-        System.out.print("Тема: Особливості призначення інтерфейсів та принципу успадкування.\n\n");
+        System.out.print("Тема: Особливості призначення інтерфейсів "
+                                +"та принципу успадкування.\n\n");
 
         // =====================================================================
         // 1. ЗАГАЛЬНА ПРАКТИЧНА ЧАСТИНА (Транспортні засоби)
         // =====================================================================
-        System.out.print("--- 1. Демонстрація загального прикладу (Транспортні засоби) ---\n");
+        System.out.print("--- 1. Демонстрація загального прикладу (Транспортні засоби). ---\n");
         // Генерація рядка-роздільника фіксованої довжини
         String vSeparator = "+------------"
                             +"+--------------"
                             +"+------"
                             +"+----------"
-                            +"+-------------------------------------------------------+";
+                            +"+---------------------------------------------------------------------+";
         
         // Поліморфний масив: зберігає посилання на базовий абстрактний клас Vehicle,
         // але ініціалізований конкретними об'єктами дочірніх класів                    
@@ -51,7 +52,7 @@ public class Main {
         // Виведення шапки першої таблиці
         System.out.println(vSeparator);
         // Специфікатори типу %-10s задають ширину колонки та вирівнювання по лівому краю
-        System.out.printf("| %-10s | %-12s | %-4s | %-8s | %-53s |%n", 
+        System.out.printf("| %-10s | %-12s | %-4s | %-8s | %-67s |%n", 
                          "Тип", "Марка/Модель", "Рік", "Зарядка", "Поточний стан / Дія");
         System.out.println(vSeparator);
 
@@ -68,7 +69,7 @@ public class Main {
 
             // Поліморфний виклик методу v.move(). Точна реалізація визначається JVM 
             // динамічно під час виконання програми
-            System.out.printf("| %-10s | %-12s | %-4d | %-8s | %-53s |%n", 
+            System.out.printf("| %-10s | %-12s | %-4d | %-8s | %-67s |%n", 
                     type, v.getModel(), v.getYear(), "   " + chargeStatus, v.move());
         }
         // Закриття таблиці
@@ -78,13 +79,14 @@ public class Main {
         // =====================================================================
         // 2. ІНДИВІДУАЛЬНЕ ЗАВДАННЯ: ВАРІАНТ №7 (Комп'ютерна техніка)
         // =====================================================================
-        System.out.print("--- 2. Демонстрація індивідуального Варіанту №7 (Комп'ютерна техніка) ---\n");
+        System.out.print("--- 2. Демонстрація індивідуального завддання. Варіант №7"
+                        +" (Комп'ютерна техніка). ---\n");
         //Генерація лінійного роздільника для другої таблиці
         String dSeparator = "+------------"
                             +"+-------------"
                             +"+-----------------"
                             +"+------------"
-                            +"+-------------------------------------------+";
+                            +"+---------------------------------------------------------+";
 
         // Створення масиву обчислювальної техніки. Демонстрація абстракції:
         // ми працюємо з абстрактним типом ComputerDevice, приховуючи деталі реалізації
@@ -96,7 +98,7 @@ public class Main {
 
         // Виведення шапки другої таблиці
         System.out.println(dSeparator);
-        System.out.printf("| %-10s | %-11s | %-15s | %-10s | %-41s |%n",
+        System.out.printf("| %-10s | %-11s | %-15s | %-10s | %-55s |%n",
                          "Тип", "Виробник", "Модель", "Мережа", "Статус ОС (bootUp)");
         System.out.println(dSeparator);
 
@@ -107,18 +109,28 @@ public class Main {
             String netLabel = " ";
             
             // Низхідне приведення після обов'язкової безпечної перевірки instanceof.
-            // Потрібно для доступу до методу getNetworkType(), якого немає в абстрактному ComputerDevice
+            // Потрібно для доступу до методу getNetworkType(), якого немає в 
+            // абстрактному ComputerDevice
             if (cd instanceof Connectable) {
                 netLabel = ((Connectable) cd).getNetworkType();
             }
 
-            // Динамічне зв'язування: виклик cd.bootUp() виконає метод конкретного Laptop або Desktop
-            System.out.printf("| %-10s | %-11s | %-15s | %-10s | %-41s |%n", 
-                    typeLabel, cd.getBrand(), cd.getModel(), netLabel, cd.bootUp());
+            // Формуємо розширений статус з полями [АКБ], [БЖ]
+            String statusWithDetails = cd.bootUp();
+            if (cd instanceof Laptop) {
+                statusWithDetails += " [АКБ: " + ((Laptop) cd).getBatteryCapacity() + " мАг]";
+            } else if (cd instanceof Desktop) {
+                statusWithDetails += " [БЖ: " + ((Desktop) cd).getPowerSupply() + " Вт]";
+    }
+
+            // Динамічне зв'язування: виклик cd.bootUp() виконає метод конкретного 
+            // Laptop або Desktop
+            System.out.printf("| %-10s | %-11s | %-15s | %-10s | %-55s |%n", 
+                    typeLabel, cd.getBrand(), cd.getModel(), netLabel, statusWithDetails);
         }
 
         // Демонстрація поліморфізму через інтерфейсне посилання.
-         //Створення об'єкта, де типом посилання є інтерфейс Connectable, 
+        //Створення об'єкта, де типом посилання є інтерфейс Connectable, 
         // а типом об'єкта в кучі (Heap) — конкретний Laptop.
         // Це обмежує видимість об'єкта виключно методами самого інтерфейсу.
         Connectable officeLaptop = new Laptop("HP", "EliteBook", 5000);
@@ -126,9 +138,15 @@ public class Main {
         // ми перевіряємо, чи є він спадкоємцем базового класу ComputerDevice
         if (officeLaptop instanceof ComputerDevice) {
             ComputerDevice polyDevice = (ComputerDevice) officeLaptop;
-            System.out.printf("| %-10s | %-11s | %-15s | %-10s | %-41s |%n", 
-                             "* Ноутбук", polyDevice.getBrand(), polyDevice.getModel(), 
-                                        officeLaptop.getNetworkType(), polyDevice.bootUp());
+            Laptop polyLaptop = (Laptop) officeLaptop; // для доступа к батарее
+    
+            String statusWithDetails = polyDevice.bootUp() + " [АКБ: " 
+                                                           + polyLaptop.getBatteryCapacity() 
+                                                           + " мАг]";
+            
+            System.out.printf("| %-10s | %-11s | %-15s | %-10s | %-55s |%n", 
+                    "* Ноутбук", polyDevice.getBrand(), polyDevice.getModel(), 
+                    officeLaptop.getNetworkType(), statusWithDetails);
         }
         
         // Закриття таблиці та виведення академічної сноски-аннотації

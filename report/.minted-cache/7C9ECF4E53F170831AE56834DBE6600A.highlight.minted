@@ -1,0 +1,161 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{ * Copyright (c) 2026. Anastasiia Gorbunova}
+\PYG{c+cm}{ * National University \PYGZdq{}Odesa Polytechnic\PYGZdq{}}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * Licensed under the Apache License, Version 2.0 (the \PYGZdq{}License\PYGZdq{});}
+\PYG{c+cm}{ * you may not use this file except in compliance with the License.}
+\PYG{c+cm}{ * You may obtain a copy of the License at}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ *     http://apache.org}
+\PYG{c+cm}{ */}
+\PYG{k+kn}{package}\PYG{+w}{ }\PYG{n+nn}{ad251.gorbunova}\PYG{p}{;}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Головний керуючий клас програми (Точка входу).}
+\PYG{c+cm}{ * Виконує координацію роботи обох секцій лабораторної роботи та демонструє}
+\PYG{c+cm}{ * побудову динамічних CLI\PYGZhy{}таблиць на основі об\PYGZsq{}єктних моделей.}
+\PYG{c+cm}{ * }
+\PYG{c+cm}{ * @author Анастасія Горбунова}
+\PYG{c+cm}{ * @version 5.0 23 Oct 2026}
+\PYG{c+cm}{ */}
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{class} \PYG{n+nc}{Main}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+
+\PYG{+w}{    }\PYG{c+cm}{/**}
+\PYG{c+cm}{     * Точка входу в систему. Формує структурований псевдотабличний лог.}
+\PYG{c+cm}{     * }
+\PYG{c+cm}{     * @param args аргументи командного рядка CLI}
+\PYG{c+cm}{     */}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{args}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== Лабораторна робота №5 ===\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Тема: Особливості призначення інтерфейсів \PYGZdq{}}
+\PYG{+w}{                                }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}та принципу успадкування.\PYGZbs{}n\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// =====================================================================}
+\PYG{+w}{        }\PYG{c+c1}{// 1. ЗАГАЛЬНА ПРАКТИЧНА ЧАСТИНА (Транспортні засоби)}
+\PYG{+w}{        }\PYG{c+c1}{// =====================================================================}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZhy{}\PYGZhy{} 1. Демонстрація загального прикладу (Транспортні засоби). \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{c+c1}{// Генерація рядка\PYGZhy{}роздільника фіксованої довжини}
+\PYG{+w}{        }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{vSeparator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{+w}{                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{+w}{                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{+w}{                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{+w}{                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{c+c1}{// Поліморфний масив: зберігає посилання на базовий абстрактний клас Vehicle,}
+\PYG{+w}{        }\PYG{c+c1}{// але ініціалізований конкретними об\PYGZsq{}єктами дочірніх класів                    }
+\PYG{+w}{        }\PYG{n}{Vehicle}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{vehicles}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Car}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Toyota\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2022}\PYG{p}{),}
+\PYG{+w}{            }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Bicycle}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Trek\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2023}\PYG{p}{),}
+\PYG{+w}{            }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{ElectricCar}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Tesla\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2024}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{};}
+
+\PYG{+w}{        }\PYG{c+c1}{// Виведення шапки першої таблиці}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{vSeparator}\PYG{p}{);}
+\PYG{+w}{        }\PYG{c+c1}{// Специфікатори типу \PYGZpc{}\PYGZhy{}10s задають ширину колонки та вирівнювання по лівому краю}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}10s | \PYGZpc{}\PYGZhy{}12s | \PYGZpc{}\PYGZhy{}4s | \PYGZpc{}\PYGZhy{}8s | \PYGZpc{}\PYGZhy{}67s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                         }\PYG{l+s}{\PYGZdq{}Тип\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Марка/Модель\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Рік\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Зарядка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Поточний стан / Дія\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{vSeparator}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// Ітерація по масиву транспортних засобів}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Vehicle}\PYG{+w}{ }\PYG{n}{v}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{vehicles}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Визначення текстового маркера типу на основі RTTI (Run\PYGZhy{}Time Type Information)}
+\PYG{+w}{            }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{type}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Автомобіль\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{v}\PYG{+w}{ }\PYG{k}{instanceof}\PYG{+w}{ }\PYG{n}{Bicycle}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{type}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Велосипед\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{v}\PYG{+w}{ }\PYG{k}{instanceof}\PYG{+w}{ }\PYG{n}{ElectricCar}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{type}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Електрокар\PYGZdq{}}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Безпечна перевірка реалізації інтерфейсу Chargeable без виклику void\PYGZhy{}методу.}
+\PYG{+w}{            }\PYG{c+c1}{// Якщо об\PYGZsq{}єкт підтримує інтерфейс — виводимо \PYGZdq{}+\PYGZdq{}, інакше \PYGZdq{}\PYGZhy{}\PYGZdq{}}
+\PYG{+w}{            }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{chargeStatus}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{v}\PYG{+w}{ }\PYG{k}{instanceof}\PYG{+w}{ }\PYG{n}{Chargeable}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}+\PYGZdq{}}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZdq{}}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Поліморфний виклик методу v.move(). Точна реалізація визначається JVM }
+\PYG{+w}{            }\PYG{c+c1}{// динамічно під час виконання програми}
+\PYG{+w}{            }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}10s | \PYGZpc{}\PYGZhy{}12s | \PYGZpc{}\PYGZhy{}4d | \PYGZpc{}\PYGZhy{}8s | \PYGZpc{}\PYGZhy{}67s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                    }\PYG{n}{type}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{.}\PYG{n+na}{getModel}\PYG{p}{(),}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{.}\PYG{n+na}{getYear}\PYG{p}{(),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}   \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{chargeStatus}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{.}\PYG{n+na}{move}\PYG{p}{());}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{c+c1}{// Закриття таблиці}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{vSeparator}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// =====================================================================}
+\PYG{+w}{        }\PYG{c+c1}{// 2. ІНДИВІДУАЛЬНЕ ЗАВДАННЯ: ВАРІАНТ №7 (Комп\PYGZsq{}ютерна техніка)}
+\PYG{+w}{        }\PYG{c+c1}{// =====================================================================}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZhy{}\PYGZhy{} 2. Демонстрація індивідуального завддання. Варіант №7\PYGZdq{}}
+\PYG{+w}{                        }\PYG{o}{+}\PYG{l+s}{\PYGZdq{} (Комп\PYGZsq{}ютерна техніка). \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{c+c1}{//Генерація лінійного роздільника для другої таблиці}
+\PYG{+w}{        }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{dSeparator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{+w}{                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{+w}{                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{+w}{                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{+w}{                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZdq{}}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Створення масиву обчислювальної техніки. Демонстрація абстракції:}
+\PYG{+w}{        }\PYG{c+c1}{// ми працюємо з абстрактним типом ComputerDevice, приховуючи деталі реалізації}
+\PYG{+w}{        }\PYG{n}{ComputerDevice}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{devices}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Laptop}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Lenovo\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}ThinkPad T470s\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{4600}\PYG{p}{),}
+\PYG{+w}{            }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Desktop}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ASUS\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}ROG Strix\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{750}\PYG{p}{),}
+\PYG{+w}{            }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Laptop}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Apple\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}MacBook Pro\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{5800}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{};}
+
+\PYG{+w}{        }\PYG{c+c1}{// Виведення шапки другої таблиці}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{dSeparator}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}10s | \PYGZpc{}\PYGZhy{}11s | \PYGZpc{}\PYGZhy{}15s | \PYGZpc{}\PYGZhy{}10s | \PYGZpc{}\PYGZhy{}55s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                         }\PYG{l+s}{\PYGZdq{}Тип\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Виробник\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Модель\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Мережа\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Статус ОС (bootUp)\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{dSeparator}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// Поліморфний обхід масиву комп\PYGZsq{}ютерних пристроїв}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{ComputerDevice}\PYG{+w}{ }\PYG{n}{cd}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{devices}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Тернарний оператор для визначення базового типу пристрою}
+\PYG{+w}{            }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{typeLabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{cd}\PYG{+w}{ }\PYG{k}{instanceof}\PYG{+w}{ }\PYG{n}{Laptop}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ноутбук\PYGZdq{}}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Десктоп\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{netLabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }
+\PYG{+w}{            }\PYG{c+c1}{// Низхідне приведення після обов\PYGZsq{}язкової безпечної перевірки instanceof.}
+\PYG{+w}{            }\PYG{c+c1}{// Потрібно для доступу до методу getNetworkType(), якого немає в }
+\PYG{+w}{            }\PYG{c+c1}{// абстрактному ComputerDevice}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{cd}\PYG{+w}{ }\PYG{k}{instanceof}\PYG{+w}{ }\PYG{n}{Connectable}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{netLabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{((}\PYG{n}{Connectable}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{cd}\PYG{p}{).}\PYG{n+na}{getNetworkType}\PYG{p}{();}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Формуємо розширений статус з полями [АКБ], [БЖ]}
+\PYG{+w}{            }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{statusWithDetails}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{cd}\PYG{p}{.}\PYG{n+na}{bootUp}\PYG{p}{();}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{cd}\PYG{+w}{ }\PYG{k}{instanceof}\PYG{+w}{ }\PYG{n}{Laptop}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{statusWithDetails}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} [АКБ: \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{((}\PYG{n}{Laptop}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{cd}\PYG{p}{).}\PYG{n+na}{getBatteryCapacity}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} мАг]\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{cd}\PYG{+w}{ }\PYG{k}{instanceof}\PYG{+w}{ }\PYG{n}{Desktop}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{statusWithDetails}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} [БЖ: \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{((}\PYG{n}{Desktop}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{cd}\PYG{p}{).}\PYG{n+na}{getPowerSupply}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} Вт]\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Динамічне зв\PYGZsq{}язування: виклик cd.bootUp() виконає метод конкретного }
+\PYG{+w}{            }\PYG{c+c1}{// Laptop або Desktop}
+\PYG{+w}{            }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}10s | \PYGZpc{}\PYGZhy{}11s | \PYGZpc{}\PYGZhy{}15s | \PYGZpc{}\PYGZhy{}10s | \PYGZpc{}\PYGZhy{}55s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                    }\PYG{n}{typeLabel}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{cd}\PYG{p}{.}\PYG{n+na}{getBrand}\PYG{p}{(),}\PYG{+w}{ }\PYG{n}{cd}\PYG{p}{.}\PYG{n+na}{getModel}\PYG{p}{(),}\PYG{+w}{ }\PYG{n}{netLabel}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{statusWithDetails}\PYG{p}{);}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Демонстрація поліморфізму через інтерфейсне посилання.}
+\PYG{+w}{        }\PYG{c+c1}{//Створення об\PYGZsq{}єкта, де типом посилання є інтерфейс Connectable, }
+\PYG{+w}{        }\PYG{c+c1}{// а типом об\PYGZsq{}єкта в кучі (Heap) — конкретний Laptop.}
+\PYG{+w}{        }\PYG{c+c1}{// Це обмежує видимість об\PYGZsq{}єкта виключно методами самого інтерфейсу.}
+\PYG{+w}{        }\PYG{n}{Connectable}\PYG{+w}{ }\PYG{n}{officeLaptop}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Laptop}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}HP\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}EliteBook\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{5000}\PYG{p}{);}
+\PYG{+w}{        }\PYG{c+c1}{// Для включення цього об\PYGZsq{}єкта в загальну таблицю комп\PYGZsq{}ютерної техніки,}
+\PYG{+w}{        }\PYG{c+c1}{// ми перевіряємо, чи є він спадкоємцем базового класу ComputerDevice}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{officeLaptop}\PYG{+w}{ }\PYG{k}{instanceof}\PYG{+w}{ }\PYG{n}{ComputerDevice}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{ComputerDevice}\PYG{+w}{ }\PYG{n}{polyDevice}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{ComputerDevice}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{officeLaptop}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{Laptop}\PYG{+w}{ }\PYG{n}{polyLaptop}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Laptop}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{officeLaptop}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// для доступа к батарее}
+\PYG{+w}{    }
+\PYG{+w}{            }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{statusWithDetails}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{polyDevice}\PYG{p}{.}\PYG{n+na}{bootUp}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} [АКБ: \PYGZdq{}}\PYG{+w}{ }
+\PYG{+w}{                                                           }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{polyLaptop}\PYG{p}{.}\PYG{n+na}{getBatteryCapacity}\PYG{p}{()}\PYG{+w}{ }
+\PYG{+w}{                                                           }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} мАг]\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }
+\PYG{+w}{            }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}10s | \PYGZpc{}\PYGZhy{}11s | \PYGZpc{}\PYGZhy{}15s | \PYGZpc{}\PYGZhy{}10s | \PYGZpc{}\PYGZhy{}55s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                    }\PYG{l+s}{\PYGZdq{}* Ноутбук\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{polyDevice}\PYG{p}{.}\PYG{n+na}{getBrand}\PYG{p}{(),}\PYG{+w}{ }\PYG{n}{polyDevice}\PYG{p}{.}\PYG{n+na}{getModel}\PYG{p}{(),}\PYG{+w}{ }
+\PYG{+w}{                    }\PYG{n}{officeLaptop}\PYG{p}{.}\PYG{n+na}{getNetworkType}\PYG{p}{(),}\PYG{+w}{ }\PYG{n}{statusWithDetails}\PYG{p}{);}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{c+c1}{// Закриття таблиці та виведення академічної сноски\PYGZhy{}аннотації}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{dSeparator}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[АННОТАЦІЯ] * — Об\PYGZsq{}єкт створено через інтерфейсний тип посилання \PYGZdq{}}
+\PYG{+w}{                                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}(Connectable dev = new Laptop(...)).\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}                Демонстрація динамічного поліморфізму та доступу \PYGZdq{}}
+\PYG{+w}{                                            }\PYG{o}{+}\PYG{l+s}{\PYGZdq{}виключно до методів інтерфейсу.\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

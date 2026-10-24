@@ -41,7 +41,21 @@ public abstract class ComputerDevice {
      */
     public abstract String bootUp();
 
-    // --- Публічні геттери ---
-    public String getBrand() { return brand; }
-    public String getModel() { return model; }
+        /**
+     * Повертає торгову марку (бренд) обчислювального пристрою.
+     * 
+     * @return рядок із назвою бренду виробника
+     */
+    public String getBrand() {
+        return brand;
+    }
+
+    /**
+     * Повертає конкретну модель обчислювального пристрою.
+     * 
+     * @return рядок із назвою моделі техніки
+     */
+    public String getModel() {
+        return model;
+    }
 }

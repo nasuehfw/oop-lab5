@@ -11,3 +11,6 @@ bin/
 *.toc
 *.synctex.gz
 report/_minted-*
+
+# --- PlantUML ---
+*.puml

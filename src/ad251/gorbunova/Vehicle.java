@@ -41,7 +41,21 @@ public abstract class Vehicle {
      */
     public abstract String move();
 
-    // --- Публічні геттери ---
-    public String getModel() { return model; }
-    public int getYear() { return year; }
+    /**
+     * Повертає назву моделі або марки транспортного засобу.
+     * 
+     * @return рядок із назвою моделі
+     */
+    public String getModel() {
+        return model;
+    }
+
+    /**
+     * Повертає рік випуску транспортного засобу.
+     * 
+     * @return чотиризначний рік випуску
+     */
+    public int getYear() {
+        return year;
+    }
 }
